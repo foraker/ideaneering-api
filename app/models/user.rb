@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :access_tokens, dependent: :destroy
   has_many :ideas
+  has_many :comments
+  has_many :votes
 
   validates :email, :name, presence: true
 

@@ -5,7 +5,7 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.all
 
-    render json: @ideas
+    render json: @ideas, include: [:comments, :user, :votes]
   end
 
   # GET /ideas/1

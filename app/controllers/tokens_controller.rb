@@ -1,6 +1,6 @@
 class TokensController < ApplicationController
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    user = AuthenticatedUser.new(params[:code]).perform
 
     if user.persisted?
       render json: user.access_tokens.first_or_create

@@ -6,13 +6,11 @@ class User < ActiveRecord::Base
 
   validates :email, :name, presence: true
 
-  def self.from_omniauth(access_token)
-    data = access_token.info
-
+  def self.find_or_create_from_oauth(data)
     User.where(email: data[:email]).first_or_initialize.tap do |u|
       u.name      = data[:name]
-      u.image     = data[:image]
-      u.oauth_uid = access_info.uid
+      u.image     = data[:picture]
+      u.oauth_uid = data[:id]
       u.save
     end
   end

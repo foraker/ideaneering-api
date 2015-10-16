@@ -12,6 +12,7 @@ gem 'rack-cors'
 # Using fork since it supports rack2
 gem 'omniauth', github: 'twalpole/omniauth', branch: 'rack_master'
 gem 'omniauth-google-oauth2'
+gem 'google-api-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
